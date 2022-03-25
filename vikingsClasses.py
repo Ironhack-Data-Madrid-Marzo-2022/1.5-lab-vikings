@@ -58,37 +58,45 @@ class War:
 
         self.saxonArmy = []
 
-    def addViking(self, warrior):
+    def addViking(self, viking):
 
-        self.vikingArmy.append(warrior)
+        self.vikingArmy.append(viking)
 
-    def addSaxon(self, warrior):
+    def addSaxon(self, saxon):
 
-        self.saxonArmy.append(warrior)
+        self.saxonArmy.append(saxon)
 
     def vikingAttack(self):
 
-        v = random.choice(self.vikingArmy)
+        v1 = self.vikingArmy[random.randint(0, len(self.vikingArmy)-1)]
 
-        s = random.choice(self.saxonArmy)
+        s1 = self.saxonArmy[random.randint(0, len(self.saxonArmy)-1)]
 
-        if(s.self.health==v.self.strength): self.saxonArmy.remove(s)
+        dam1 = s1.receiveDamage(v1.strength)
 
-        return s.receiveDamage(v.self.strength)
+        if(s1.health==v1.strength): self.saxonArmy.remove(s1)
+
+        return dam1
 
     def saxonAttack(self):
 
-        v = random.choice(self.vikingArmy)
+        v2 = self.vikingArmy[random.randint(0, len(self.vikingArmy)-1)]
 
-        s = random.choice(self.saxonArmy)
+        s2 = self.saxonArmy[random.randint(0, len(self.saxonArmy)-1)]
 
-        if(v.self.health==s.self.strength): self.vikingArmy.remove(v)
+        dam2 = v2.receiveDamage(s2.strength)
 
-        return v.receiveDamage(s.self.strength)
+        if(v2.health==s2.strength): self.vikingArmy.remove(v2)
+
+        return dam2
 
     def showStatus(self):
 
-        if(self.saxonArmy==[]): 
+        if not self.saxonArmy: return 'Vikings have won the war of the century!'
+
+        elif not self.vikingArmy: return 'Saxons have fought for their lives and survive another day...'
+
+        elif(len(self.saxonArmy)==1 or len(self.vikingArmy)==1): return 'Vikings and Saxons are still in the thick of battle.'
 
 
 
