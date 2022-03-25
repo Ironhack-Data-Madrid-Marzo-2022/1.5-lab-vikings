@@ -103,13 +103,12 @@ class War:
 
        if saj.health <=0:
 
-           self.saxonArmy.pop(saj)
+           self.saxonArmy.remove(saj)
 
     
        return (saj.receiveDamage(vik.strength))
 
-         
-
+        
        
 
     def saxonAttack(self):
@@ -124,9 +123,23 @@ class War:
 
        if vik.health <=0:
 
-           self.vikingArmy.pop(vik)
+           self.vikingArmy.remove(vik)
 
        return vik.receiveDamage(saj.strength)
+
+
+    def showStatus(self):
+
+        if self.saxonArmy==[]:
+            return "Vikings have won the war of the century!"
+
+        elif self.vikingArmy==[]:
+            return "Saxons have fought for their lives and survive another day..."
+
+        elif len(self.saxonArmy)>=1 and len(self.vikingArmy)>=1:
+
+            return "Vikings and Saxons are still in the thick of battle."
+
 
 
 
