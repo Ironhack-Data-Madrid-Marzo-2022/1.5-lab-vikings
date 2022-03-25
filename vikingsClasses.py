@@ -46,6 +46,8 @@ class Saxon(Soldier):
     def attack(self):
         return self.strength
 
+    def receiveDamage
+
 
 
 # War
