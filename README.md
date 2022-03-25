@@ -1,4 +1,4 @@
-# Lab | Vikings (lab-data-vikings)
+# Lab | Vikings
 
 ## Introduction
 
