@@ -26,7 +26,7 @@ class TestWar2(unittest.TestCase):
             cls.name = 'Harald'
             cls.strength = 150
             cls.health = 300
-            return Viking(cls.name, cls.health, cls.strength)
+            return Viking()
 
         def generateSaxon():
             cls.health = 60
