@@ -1,3 +1,4 @@
+import random
 
 # Soldier
 
@@ -57,4 +58,35 @@ class Saxon(Soldier):
 
 
 class War:
-    pass
+
+    def __init__(self):
+        self.vikingArmy = []
+        self.saxonArmy = []
+
+    def addViking(self, viking):
+        self.vikingArmy.append(viking)
+
+    def addSaxon(self, saxon):
+        self.saxonArmy.append(saxon)
+
+    def vikingAttack(self):
+        idex_saxon = random.randint(0, len(self.saxonArmy) - 1)
+        id_saxon = self.saxonArmy[idex_saxon]
+
+        idex_viking = random.randint(0, len(self.vikingArmy) - 1)
+        id_viking = self.vikingArmy[idex_viking]
+
+        id_saxon.receiveDamage(id_viking.strength)
+
+
+
+
+
+
+
+
+
+
+
+
+        pass
