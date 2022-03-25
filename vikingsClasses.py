@@ -46,11 +46,11 @@ class Saxon(Soldier):
     def attack(self):
         return self.strength
 
-    def receiveDamage(damage):
+    def receiveDamage(self, damage):
         self.health-=damage
         if self.health>0:
-             return (" A Saxon has received " + str(damage) +" points of damage")
-        else: return(" A Saxon has died in combat")
+             return ("A Saxon has received " + str(damage) +" points of damage")
+        else: return("A Saxon has died in combat")
 
 
 
