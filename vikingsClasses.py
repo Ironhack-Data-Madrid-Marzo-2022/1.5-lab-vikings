@@ -1,6 +1,8 @@
 from audioop import add
 from os import lseek
+from pickle import FALSE, TRUE
 import random
+from tkinter import N
 
 
 lseek#MODIFY 
@@ -27,7 +29,7 @@ class Soldier:
 
         
 
-    
+  
 
 # Viking
 
@@ -90,27 +92,52 @@ class War:
         self.vikingArmy=[]
         self.saxonArmy=[]
 
-    def addViking(self, n=Viking):
+    def addViking (self, v) :
+        
+        self.vikingArmy.append(v)
 
-        self.vikingArmy.append(n)
 
-
-    def addSaxon(self, n=Saxon):
-
-        self.saxonArmy.append(n)
+    def addSaxon(self, s):
+        
+        self.saxonArmy.append(s)
 
     
     def vikingAttack(self):
-        # random object in list
-        id= random.randint (0, len(self.saxonArmy))  
-        x= self.saxonArmy[id]
-        
-        Saxon.receiveDamage(self, n)
-        
-        
+        # random object in list of saxon
+        id_s= random.randint (0, len(self.saxonArmy)-1)
+        # have to call an object in viking list to attack also
+        id_v= random.randint(0, len(self.vikingArmy)-1)  
+        r_saxon= self.saxonArmy[id_s]
+        r_viking= self.vikingArmy[id_v]
+        #calculate the damage and ouyt put the result
+        dmg= r_viking.strength
+        r= r_saxon.receiveDamage(dmg)
+        if r_saxon.health <= 0:
+            self.saxonArmy.pop(id_s)
+        return r
 
-    def saxonAttack():
 
-    def showStatus():
+    def saxonAttack(self):
 
-pass
+        id_s= random.randint(0, len(self.vikingArmy)-1)
+        id_v= random.randint (0, len(self.saxonArmy)-1)
+        r_saxon= self.saxonArmy[id_s]
+        r_viking= self.vikingArmy[id_v]
+
+        dmg= r_saxon.strength
+        r= r_viking.receiveDamage(dmg)
+        if r_viking.health <= 0:
+            self.vikingArmy.pop(id_v)
+
+        return r
+
+
+
+
+    def showStatus(self):
+        if len(self.saxonArmy) == 0:
+            return "Vikings have won the war of the century!"
+        elif len(self.vikingArmy) == 0:
+            return "Saxons have fought for their lives and survive another day..."
+        elif len(self.saxonArmy) >= 1 and len(self.vikingArmy) >= 1:
+            return "Vikings and Saxons are still in the thick of battle."
