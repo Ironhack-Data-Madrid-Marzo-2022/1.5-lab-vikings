@@ -2,33 +2,42 @@ from vikingsClasses import Saxon, Viking, War
 
 battle = War()
 
+print('Create your viking army: ')
 
+vlist = []
 
-vdic = [Viking('George',5,5),Viking('Steve',6,6),Viking('Michael',7,7)]
+for i in range(3):
 
-battle.addViking(vdic[0])
-battle.addViking(vdic[1])
-battle.addViking(vdic[2])
+    name = input('Enter name: ')
 
+    health = int(input('Enter health: '))
 
+    strength = int(input('Enter strength: '))
 
+    vlist.append(Viking(name,health,strength))
 
+    battle.addViking(vlist[i])
 
+print('Create your saxon army: ')
 
+slist = []
 
+for i in range(3):
 
+    health = int(input('Enter health: '))
 
+    strength = int(input('Enter strength: '))
 
+    slist.append(Saxon(health,strength))
 
-sdic = [Saxon(20,20),Saxon(40,40),Saxon(60,60)]
+    battle.addSaxon(slist[i])
 
-battle.addSaxon(sdic[0])
-battle.addSaxon(sdic[1])
-battle.addSaxon(sdic[2])
+battle.vikingAttack
+battle.saxonAttack
+battle.vikingAttack
+battle.saxonAttack
+battle.vikingAttack
+battle.saxonAttack
 
-battle.vikingAttack()
-battle.saxonAttack()
-
+print('The result of 3 rounds. A soldier attack on another one for round:')
 print(battle.showStatus())
-
-
