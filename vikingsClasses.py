@@ -66,7 +66,7 @@ class War():
 
         self.saxonArmy.append(saxon)
 
-    def vikingAttack(self):                 #PROBLEMA
+    def vikingAttack(self):                 
 
         saxon = self.saxonArmy[random.randint(0,len(self.saxonArmy)-1)]
 
@@ -97,6 +97,3 @@ class War():
         elif len(self.vikingArmy)<1: return 'Saxons have fought for their lives and survive another day...'
 
         else: return 'Vikings and Saxons are still in the thick of battle.'
-
-
-
