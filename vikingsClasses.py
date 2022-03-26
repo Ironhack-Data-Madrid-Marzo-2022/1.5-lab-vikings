@@ -1,56 +1,56 @@
 import random
 
-class Soldier:
+class Soldier():
 
-    def __init__(self, health, strength):
+    def __init__(self, health = 0, strength = 0):
 
         self.health = health
-        
+
         self.strength = strength
 
     def attack(self):
-        
+
         return self.strength
 
-    def receiveDamage(self, damage = 0):
+    def receiveDamage(self, damage = 0):       
 
         self.health -= damage
 
 class Viking(Soldier):
 
-    def __init__(self, name = '', health = '', strength = ''):
+    def __init__(self, name = '', health = 0, strength= 0):
 
         self.name = name
-        
-        Soldier.__init__(self, health, strength)
 
+        Soldier.__init__(self, health, strength)
+    
     def receiveDamage(self, damage = 0):
 
         self.health -= damage
 
-        if(self.health<=0): return self.name + ' has died in act of combat'
+        if self.health>0: return f'{self.name} has received {damage} points of damage'
 
-        else: return self.name + ' has received ' + str(damage) + ' points of damage'
-    
+        else: return f'{self.name} has died in act of combat'
+
     def battleCry(self):
 
         return 'Odin Owns You All!'
 
 class Saxon(Soldier):
 
-    def __init__(self, health = '', strength = ''):
+    def __init__(self, health = 0, strength = 0):
 
         Soldier.__init__(self, health, strength)
 
-    def receiveDamage(self, damage=0):
+    def receiveDamage(self, damage = 0):
 
         self.health -= damage
 
-        if(self.health<=0): return 'A Saxon has died in combat'
+        if self.health>0: return f'A Saxon has received {damage} points of damage'
 
-        else: return 'A Saxon has received ' + str(damage) + ' points of damage'
-    
-class War:
+        else: return f'A Saxon has died in combat'
+
+class War():
 
     def __init__(self):
 
@@ -66,38 +66,37 @@ class War:
 
         self.saxonArmy.append(saxon)
 
-    def vikingAttack(self):
+    def vikingAttack(self):                 #PROBLEMA
 
-        v1 = self.vikingArmy[random.randint(0, len(self.vikingArmy)-1)]
+        saxon = self.saxonArmy[random.randint(0,len(self.saxonArmy)-1)]
 
-        s1 = self.saxonArmy[random.randint(0, len(self.saxonArmy)-1)]
+        viking = self.vikingArmy[random.randint(0,len(self.vikingArmy)-1)]
 
-        dam1 = s1.receiveDamage(v1.strength)
+        x = saxon.receiveDamage(viking.strength)
 
-        if(s1.health==v1.strength): self.saxonArmy.remove(s1)
+        if saxon.health<1: self.saxonArmy.remove(saxon)
 
-        return dam1
+        return x
 
     def saxonAttack(self):
 
-        v2 = self.vikingArmy[random.randint(0, len(self.vikingArmy)-1)]
+        saxon = self.saxonArmy[random.randint(0,len(self.saxonArmy)-1)]
 
-        s2 = self.saxonArmy[random.randint(0, len(self.saxonArmy)-1)]
+        viking = self.vikingArmy[random.randint(0,len(self.vikingArmy)-1)]
 
-        dam2 = v2.receiveDamage(s2.strength)
+        x = viking.receiveDamage(saxon.strength)
 
-        if(v2.health==s2.strength): self.vikingArmy.remove(v2)
+        if viking.health<1: self.vikingArmy.remove(viking)
 
-        return dam2
+        return x
 
     def showStatus(self):
 
-        if not self.saxonArmy: return 'Vikings have won the war of the century!'
+        if len(self.saxonArmy)<1: return 'Vikings have won the war of the century!'
 
-        elif not self.vikingArmy: return 'Saxons have fought for their lives and survive another day...'
+        elif len(self.vikingArmy)<1: return 'Saxons have fought for their lives and survive another day...'
 
-        elif(len(self.saxonArmy)==1 or len(self.vikingArmy)==1): return 'Vikings and Saxons are still in the thick of battle.'
+        else: return 'Vikings and Saxons are still in the thick of battle.'
 
 
 
-    
