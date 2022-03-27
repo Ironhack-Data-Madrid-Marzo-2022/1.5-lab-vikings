@@ -1,43 +1,59 @@
-from vikingsClasses import Saxon, Viking, War
+import random
+from vikingsClasses import Viking, Saxon, War
 
 battle = War()
 
-print('Create your viking army: ')
+def createVikingArmy():
 
-vlist = []
+    print("Let's create a viking army of 10 soldiers.")
 
-for i in range(3):
+    for i in range(10):
 
-    name = input('Enter name: ')
+        name = input('Enter name: ')
 
-    health = int(input('Enter health: '))
+        health = int(input('Enter health: '))
 
-    strength = int(input('Enter strength: '))
+        strength = int(input('Enter strength: '))
 
-    vlist.append(Viking(name,health,strength))
+        battle.addViking(Viking(name,health,strength))
 
-    battle.addViking(vlist[i])
+def createSaxonArmy():
 
-print('Create your saxon army: ')
+    print("Let's create a saxon army of 10 soldiers.")
 
-slist = []
+    for i in range(10):
 
-for i in range(3):
+        health = int(input('Enter health: '))
 
-    health = int(input('Enter health: '))
+        strength = int(input('Enter strength: '))
 
-    strength = int(input('Enter strength: '))
+        battle.addSaxon(Saxon(health,strength))
 
-    slist.append(Saxon(health,strength))
+def startWar(battle):
 
-    battle.addSaxon(slist[i])
+    x = random.randint(0,1)
 
-battle.vikingAttack
-battle.saxonAttack
-battle.vikingAttack
-battle.saxonAttack
-battle.vikingAttack
-battle.saxonAttack
+    if x==1:
+        
+        print('Vikings attack!')
 
-print('The result of 3 rounds. A soldier attack on another one for round:')
-print(battle.showStatus())
+        battle.vikingAttack()
+
+    else:
+
+        print('Saxons attack!')
+
+        battle.saxonAttack()
+
+    print(battle.showStatus())
+
+    while len(battle.vikingArmy)>=1 and len(battle.saxonArmy)>=1:
+
+        startWar(battle)
+
+createVikingArmy()
+
+createSaxonArmy()
+
+startWar(battle)
+
