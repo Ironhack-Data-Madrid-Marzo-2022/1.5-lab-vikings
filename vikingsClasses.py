@@ -35,7 +35,7 @@ class Viking(Soldier):
     def battleCry(self):
         return ("Odin Owns You All!")
 
-# Saxon-
+# -Saxon-
 
 
 class Saxon(Soldier):
@@ -53,7 +53,7 @@ class Saxon(Soldier):
         else: return("A Saxon has died in combat")
 
 
-# War-
+# -War-
 import random
 
 class War:
