@@ -61,18 +61,45 @@ class War:
         self.saxonArmy.append(saxon)
 
     def vikingAttack(self):
-        idxSaxon = random.randint(0,9)
-        idxViking = random.randint(0,9)
+        idxSaxon = random.randint(0,len(self.saxonArmy)-1)
+        idxViking = random.randint(0,len(self.vikingArmy)-1)
 
 
         unsaxon = self.saxonArmy[idxSaxon]
-        unviking= self.vikingArmy[idxViking]
+        unviking = self.vikingArmy[idxViking]
+
         result = unsaxon.receiveDamage(unviking.strength)
 
-        if unsaxon.health < 0:
+        if unsaxon.health <= 0:
             self.saxonArmy.pop(idxSaxon)
         
         return (result)
+    
+    def saxonAttack(self):
+        idxSaxon = random.randint(0,len(self.saxonArmy)-1)
+        idxViking = random.randint(0,len(self.vikingArmy)-1)
+
+        unsaxon = self.saxonArmy[idxSaxon]
+        unviking= self.vikingArmy[idxViking]
+
+        result = unviking.receiveDamage(unsaxon.strength)
+
+        if unviking.health <= 0:
+            self.vikingArmy.pop(idxViking)
+        
+        return (result)
+
+    def showStatus(self):
+        if len(self.saxonArmy) == 0: return("Vikings have won the war of the century!") 
+        elif len(self.vikingArmy) == 0: return("Saxons have fought for their lives and survive another day...")
+        else: return "Vikings and Saxons are still in the thick of battle."
+
+
+
+
+
+
+
 
 
 
