@@ -57,28 +57,34 @@ class War:
     def __init__(self):
         self.vikingArmy = []
         self.saxonArmy = []
-    def addViking(self,Viking):
-        self.vikingArmy.append(Viking)
-    def addSaxon(self,Saxon):
-        self.saxonArmy.append(Saxon)
+    def addViking(self,viking):
+        self.vikingArmy.append(viking)
+    def addSaxon(self,saxon):
+        self.saxonArmy.append(saxon)
     def vikingAttack(self):
-        saxons = self.saxonArmy
-        saxons = random.randint(0,len(self.saxonArmy)-1)
-        if saxons.health<0:
-            saxons.remove(saxons)
-        else:
-            return Saxon.receiveDamage
-    def saxonAttack(self):
-        vikings = self.vikingArmy
-        vikings = random.randint(0,len(self.vikingArmy)-1)
-        if vikings.health<0:
-            vikings.remove(vikings)
-        else:
-            return Viking.receiveDamage
+        saxon = random.randint(0,len(self.saxonArmy)-1)
+        saxons = self.saxonArmy[saxon]
+        viking = random.randint(0,len(self.vikingArmy)-1)
+        vikings = self.vikingArmy[viking]
+        damage=vikings.strength
+        result_calling = saxons.receiveDamage(damage)
+        if saxons.health<=0:
+            self.saxonArmy.pop(saxon)
+        return result_calling
+    def saxonAttack(self): #mismo que antes reemplazando donde corresponde
+        saxon = random.randint(0,len(self.saxonArmy)-1)
+        saxons = self.saxonArmy[saxon]
+        viking = random.randint(0,len(self.vikingArmy)-1)
+        vikings = self.vikingArmy[viking]
+        damage=saxons.strength
+        result_calling = vikings.receiveDamage(damage)
+        if vikings.health<=0:
+            self.vikingArmy.pop(viking)
+        return result_calling
     def showStatus(self):
-        if saxons == []:
+        if len(self.saxonArmy) == 0:
             return "Vikings have won the war of the century!"
-        elif vikings == []:
+        elif len(self.vikingArmy) == 0:
             return "Saxons have fought for their lives and survive another day..."
         else:
             return "Vikings and Saxons are still in the thick of battle."
