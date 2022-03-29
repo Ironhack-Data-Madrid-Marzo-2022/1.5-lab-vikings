@@ -66,28 +66,30 @@ class War:
     def vikingAttack(self):
         saxon=random.choice(self.saxonArmy)
         viking=random.choice(self.vikingArmy)
-        saxon.receiveDamage(viking.strength)
-        if viking.health <=0:
+        v_dam=saxon.receiveDamage(viking.strength)
+        if saxon.health <=0:
             self.saxonArmy.pop(self.saxonArmy.index(saxon))
+        return v_dam
 
 
     
     def saxonAttack(self):
         saxon=random.choice(self.saxonArmy)
         viking=random.choice(self.vikingArmy)
-        viking.receiveDamage(saxon.strength)
+        s_dam=viking.receiveDamage(saxon.strength)
         if viking.health <=0:
-            self.saxonArmy.pop(self.vikingArmy.index(viking))
+            self.vikingArmy.pop(self.vikingArmy.index(viking))
+        return s_dam
         
 
     
     def showStatus(self):
         if len(self.saxonArmy) == 0:
-            return 'Vikings have won the war of the century!'
+            return print('Vikings have won the war of the century!')
         elif len(self.vikingArmy) == 0:
-            return 'Saxons have fought for their lives and survive another day...'
+            return print('Saxons have fought for their lives and survive another day...')
         else:
-            return "Vikings and Saxons are still in the thick of battle."
+            return print("Vikings and Saxons are still in the thick of battle.")
 
 
    
