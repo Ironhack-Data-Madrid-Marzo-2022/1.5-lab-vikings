@@ -69,7 +69,7 @@ class Saxon(Soldier): # de soldier
 
                 return f"A Saxon has received {damage} points of damage"
 
-# War
+# My War
 
 
 class War:
